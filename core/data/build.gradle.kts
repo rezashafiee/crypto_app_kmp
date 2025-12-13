@@ -59,8 +59,16 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
+
+                implementation(project(":core:domain"))
+
                 implementation(libs.kotlin.stdlib)
                 // Add KMP dependencies here
+                implementation(ktorLibs.client.core)
+                implementation(ktorLibs.client.cio)
+                implementation(ktorLibs.client.serialization)
+                implementation(ktorLibs.client.contentNegotiation)
+                implementation(ktorLibs.client.logging)
             }
         }
 

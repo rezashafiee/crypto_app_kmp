@@ -26,6 +26,11 @@ dependencyResolutionManagement {
         }
         mavenCentral()
     }
+    versionCatalogs {
+        create("ktorLibs") {
+            from("io.ktor:ktor-version-catalog:3.3.3")
+        }
+    }
 }
 
 plugins {
