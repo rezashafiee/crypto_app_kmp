@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.androidLint)
+    alias(libs.plugins.convention.kmp.library)
+    alias(libs.plugins.convention.buildKonfig)
 }
 
 kotlin {

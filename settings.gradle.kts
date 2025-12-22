@@ -2,7 +2,6 @@ rootProject.name = "crypto_app_kmp"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
-    includeBuild("build-logic")
     repositories {
         google {
             mavenContent {
@@ -38,6 +37,7 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
+includeBuild("build-logic")
 include(":composeApp")
 include(":core:data")
 include(":core:presentation")
