@@ -10,4 +10,5 @@ plugins {
     alias(libs.plugins.androidKotlinMultiplatformLibrary) apply false
     alias(libs.plugins.androidLint) apply false
     alias(libs.plugins.jetbrainsKotlinJvm) apply false
+    id("com.codingfeline.buildkonfig") version "0.17.1" apply false
 }
