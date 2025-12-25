@@ -1,13 +1,13 @@
 package com.tilda.core.data.network
 
 
-import com.tilda.core.domain.util.NetworkError
-import com.tilda.core.domain.util.Result
-import io.ktor.client.statement.HttpResponse
-import io.ktor.util.network.UnresolvedAddressException
+import com.tilda.core.domain.NetworkError
+import com.tilda.core.domain.Result
+import io.ktor.client.statement.*
+import io.ktor.util.network.*
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.serialization.SerializationException
-import kotlin.coroutines.coroutineContext
 
 suspend inline fun <reified T> safeCall(
     execute: () -> HttpResponse
@@ -21,7 +21,7 @@ suspend inline fun <reified T> safeCall(
     } catch (e: Exception) {
         // if the coroutine would be canceled then this could catch the CancellationException
         // therefor the following line is added
-        coroutineContext.ensureActive()
+        currentCoroutineContext().ensureActive()
         return Result.Error(NetworkError.UnknownError(e.toString()))
     }
 
