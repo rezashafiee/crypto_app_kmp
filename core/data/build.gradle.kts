@@ -66,7 +66,6 @@ kotlin {
                 implementation(libs.kotlin.stdlib)
                 // Add KMP dependencies here
                 implementation(ktorLibs.client.core)
-                implementation(ktorLibs.client.cio)
                 implementation(ktorLibs.client.contentNegotiation)
                 implementation(ktorLibs.client.logging)
                 implementation(ktorLibs.serialization.kotlinx.json)
@@ -103,6 +102,7 @@ kotlin {
                 // part of KMP’s default source set hierarchy. Note that this source set depends
                 // on common by default and will correctly pull the iOS artifacts of any
                 // KMP dependencies declared in commonMain.
+                implementation(ktorLibs.client.darwin)
             }
         }
     }
