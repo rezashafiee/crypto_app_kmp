@@ -60,6 +60,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(libs.kotlin.stdlib)
+                api(libs.androidx.lifecycle.viewmodel)
                 // Add KMP dependencies here
             }
         }
