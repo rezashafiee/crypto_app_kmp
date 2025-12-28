@@ -4,3 +4,8 @@ import org.gradle.api.artifacts.VersionCatalogsExtension
 
 fun Project.getLibs(): VersionCatalog =
     extensions.getByType(VersionCatalogsExtension::class.java).named("libs")
+
+val Project.modulePackageName get() = path
+    .split(":")
+    .filter { it.isNotBlank() }
+    .joinToString(".") { it.lowercase() }
