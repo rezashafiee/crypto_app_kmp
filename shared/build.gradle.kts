@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.androidLint)
-    alias(libs.plugins.convention.kmp.library)
 }
 
 kotlin {
@@ -11,7 +10,7 @@ kotlin {
     // which platforms this KMP module supports.
     // See: https://kotlinlang.org/docs/multiplatform-discover-project.html#targets
     androidLibrary {
-        namespace = "com.tilda.feature.crypto.domain"
+        namespace = "com.tilda.shared"
         compileSdk = 36
         minSdk = 28
 
@@ -25,6 +24,30 @@ kotlin {
         }
     }
 
+    // For iOS targets, this is also where you should
+    // configure native binary output. For more information, see:
+    // https://kotlinlang.org/docs/multiplatform-build-native-binaries.html#build-xcframeworks
+
+    // A step-by-step guide on how to include this library in an XCode
+    // project can be found here:
+    // https://developer.android.com/kotlin/multiplatform/migrate
+    val xcfName = "sharedKit"
+    val iosTargets = listOf(iosX64(), iosArm64(), iosSimulatorArm64())
+
+    iosTargets.forEach { target ->
+        target.binaries.framework {
+            baseName = xcfName
+            isStatic = true
+
+            export(projects.core.data)
+            //export(projects.core.domain)
+            export(projects.core.presentation)
+            export(projects.feature.crypto.data)
+            //export(projects.feature.crypto.domain)
+            export(projects.feature.crypto.presentation)
+        }
+    }
+
     // Source set declarations.
     // Declaring a target automatically creates a source set with the same name. By default, the
     // Kotlin Gradle Plugin creates additional source sets that depend on each other, since it is
@@ -33,8 +56,11 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation(libs.kotlin.stdlib)
-                // Add KMP dependencies here
+                api(projects.core.data)
+                api(projects.core.presentation)
+                api(projects.feature.crypto.data)
+                api(projects.feature.crypto.presentation)
+
             }
         }
 

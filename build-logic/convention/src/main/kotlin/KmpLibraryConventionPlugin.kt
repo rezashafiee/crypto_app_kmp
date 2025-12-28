@@ -9,7 +9,9 @@ class KmpLibraryConventionPlugin : Plugin<Project> {
         plugins.apply(libs.findPlugin("kotlinMultiplatform").get().get().pluginId)
 
         extensions.configure<KotlinMultiplatformExtension> {
-
+            iosX64()
+            iosArm64()
+            iosSimulatorArm64()
         }
 
     }
