@@ -6,13 +6,22 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
-    alias(libs.plugins.convention.kmp.library)
 }
 
 kotlin {
     androidTarget {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
+        }
+    }
+
+    listOf(
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "ComposeApp"
+            isStatic = true
         }
     }
 
@@ -26,8 +35,6 @@ kotlin {
             implementation(libs.koin.compose)
         }
         commonMain.dependencies {
-
-            implementation(projects.shared)
 
             implementation(compose.runtime)
             implementation(compose.foundation)
