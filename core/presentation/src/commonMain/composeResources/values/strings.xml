@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_internet_error">No internet connection. Please check your network settings.</string>
+    <string name="server_error">A server error occurred. Please try again later.</string>
+    <string name="timout_error">The request timed out. Please try again.</string>
+    <string name="serialization_error">There was an issue processing the data. Please try again.</string>
+    <string name="too_many_requests_error">You\'ve made too many requests. Please wait a moment and try again.</string>
+    <string name="unknown_error">An unknown error occurred. Please try again.</string>
+    <string name="unexpected_error">An unexpected error occurred.</string>
+</resources>

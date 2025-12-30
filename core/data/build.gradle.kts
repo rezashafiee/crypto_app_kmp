@@ -69,12 +69,14 @@ kotlin {
                 implementation(ktorLibs.client.contentNegotiation)
                 implementation(ktorLibs.client.logging)
                 implementation(ktorLibs.serialization.kotlinx.json)
+                implementation(libs.koin.core)
             }
         }
 
         commonTest {
             dependencies {
                 implementation(libs.kotlin.test)
+                implementation(libs.koin.test)
             }
         }
 
@@ -84,6 +86,7 @@ kotlin {
                 // commonMain by default and will correctly pull the Android artifacts of any KMP
                 // dependencies declared in commonMain.
                 implementation(ktorLibs.client.okhttp)
+                implementation(libs.koin.android)
             }
         }
 

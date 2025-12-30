@@ -17,7 +17,15 @@ object HttpClientFactory {
         return HttpClient(engine) {
             install(Logging) {
                 level = if (BuildKonfig.DEBUG_MODE) LogLevel.ALL else LogLevel.NONE
-                logger = Logger.DEFAULT
+                logger = object : Logger {
+                    override fun log(message: String) {
+                        println(message)
+                    }
+                }
+            }
+            install(HttpTimeout) {
+                requestTimeoutMillis = 20_000L
+                socketTimeoutMillis = 20_000L
             }
             install(ContentNegotiation) {
                 json(

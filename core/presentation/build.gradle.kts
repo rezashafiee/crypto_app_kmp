@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
     alias(libs.plugins.androidLint)
 }
 
@@ -59,6 +61,18 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
+
+                implementation(projects.core.domain)
+
+                implementation(libs.compose.runtime)
+                implementation(libs.compose.foundation)
+                implementation(libs.compose.material3)
+                implementation(libs.compose.ui)
+                implementation(libs.compose.material3.adaptive.navigation.suite)
+
+                implementation(libs.compose.components.resources)
+                implementation(libs.compose.ui.tooling.preview)
+
                 implementation(libs.kotlin.stdlib)
                 api(libs.androidx.lifecycle.viewmodel)
                 // Add KMP dependencies here
