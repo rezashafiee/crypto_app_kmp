@@ -90,5 +90,5 @@ android {
 }
 
 dependencies {
-    implementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.tooling)
 }
