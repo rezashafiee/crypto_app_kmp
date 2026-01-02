@@ -64,6 +64,8 @@ kotlin {
 
                 implementation(projects.core.domain)
 
+                implementation(libs.kotlin.stdlib)
+
                 implementation(libs.compose.runtime)
                 implementation(libs.compose.foundation)
                 implementation(libs.compose.material3)
@@ -72,10 +74,6 @@ kotlin {
 
                 implementation(libs.compose.components.resources)
                 implementation(libs.compose.ui.tooling.preview)
-
-                implementation(libs.kotlin.stdlib)
-                api(libs.androidx.lifecycle.viewmodel)
-                // Add KMP dependencies here
             }
         }
 

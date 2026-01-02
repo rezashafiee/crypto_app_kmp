@@ -59,8 +59,13 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
+
+                implementation(projects.core.data)
+                implementation(projects.feature.crypto.domain)
+
                 implementation(libs.kotlin.stdlib)
-                // Add KMP dependencies here
+                implementation(libs.kotlinx.datetime)
+                implementation(libs.androidx.paging.common)
             }
         }
 

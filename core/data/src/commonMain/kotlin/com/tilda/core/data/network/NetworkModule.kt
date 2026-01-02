@@ -1,6 +1,5 @@
-package com.tilda.core.data.di
+package com.tilda.core.data.network
 
-import com.tilda.core.data.network.HttpClientFactory
 import io.ktor.client.HttpClient
 import org.koin.core.module.Module
 import org.koin.dsl.module

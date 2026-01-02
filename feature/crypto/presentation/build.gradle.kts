@@ -64,6 +64,13 @@ kotlin {
 
                 implementation(libs.compose.components.resources)
                 implementation(libs.compose.ui.tooling.preview)
+
+                implementation(libs.coil.compose)
+                implementation(libs.coil.network.ktor)
+                implementation(libs.coil.network.cache)
+
+                implementation(libs.androidx.lifecycle.viewmodelCompose)
+                implementation(libs.androidx.lifecycle.runtimeCompose)
             }
         }
 

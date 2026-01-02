@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.androidLint)
     alias(libs.plugins.convention.buildKonfig)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.androidx.room)
 }
 
 kotlin {
@@ -64,12 +66,14 @@ kotlin {
                 implementation(project(":core:domain"))
 
                 implementation(libs.kotlin.stdlib)
-                // Add KMP dependencies here
                 implementation(ktorLibs.client.core)
                 implementation(ktorLibs.client.contentNegotiation)
                 implementation(ktorLibs.client.logging)
                 implementation(ktorLibs.serialization.kotlinx.json)
                 implementation(libs.koin.core)
+                implementation(libs.androidx.room.runtime)
+                implementation(libs.androidx.sqlite.bundled)
+                implementation(libs.androidx.paging.common)
             }
         }
 
@@ -87,6 +91,7 @@ kotlin {
                 // dependencies declared in commonMain.
                 implementation(ktorLibs.client.okhttp)
                 implementation(libs.koin.android)
+                implementation(libs.androidx.room.sqlite.wrapper)
             }
         }
 
@@ -110,4 +115,15 @@ kotlin {
         }
     }
 
+}
+
+dependencies {
+    add("kspAndroid", libs.androidx.room.compiler)
+    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
+    add("kspIosX64", libs.androidx.room.compiler)
+    add("kspIosArm64", libs.androidx.room.compiler)
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }
