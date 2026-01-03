@@ -19,8 +19,8 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import com.tilda.core.domain.DomainError
 import com.tilda.core.presentation.util.toUiText
 import com.tilda.crypto.presentation.coin_list.components.CoinListItem
-import com.tilda.feature.crypto.presentation.models.CoinUi
-import com.tilda.feature.crypto.presentation.models.previewCoin
+import com.tilda.crypto.presentation.models.CoinUi
+import com.tilda.crypto.presentation.models.previewCoin
 import kotlinx.coroutines.flow.flowOf
 
 @Composable

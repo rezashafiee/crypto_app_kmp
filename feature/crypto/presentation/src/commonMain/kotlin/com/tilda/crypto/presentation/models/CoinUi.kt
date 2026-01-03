@@ -1,10 +1,9 @@
-package com.tilda.feature.crypto.presentation.models
+package com.tilda.crypto.presentation.models
 
-import android.icu.text.NumberFormat
 import androidx.compose.runtime.Immutable
+import com.tilda.crypto.presentation.utils.NumberFormatter
 import com.tilda.feature.crypto.domain.model.Coin
 import com.tilda.feature.crypto.domain.model.CoinPrice
-import java.util.Locale
 
 @Immutable
 data class CoinUi(
@@ -29,11 +28,7 @@ data class DisplayableNumber(
 
 
 fun Double.toDisplayableNumber(): DisplayableNumber {
-    val formatted = NumberFormat.getNumberInstance(Locale.getDefault())
-        .apply {
-            minimumFractionDigits = 2
-            maximumFractionDigits = 2
-        }.format(this)
+    val formatted = NumberFormatter.format(this)
     return DisplayableNumber(
         value = this,
         formatted = formatted

@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.tilda.crypto.presentation.components.CoinTitle
-import com.tilda.feature.crypto.presentation.models.CoinUi
-import com.tilda.feature.crypto.presentation.models.previewCoin
+import com.tilda.crypto.presentation.models.CoinUi
+import com.tilda.crypto.presentation.models.previewCoin
 
 val greenLight = Color(0xFF129423)
 val greenDark = Color(0xFF79DC7A)

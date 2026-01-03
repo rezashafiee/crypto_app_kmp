@@ -8,8 +8,8 @@ import com.tilda.core.domain.onError
 import com.tilda.core.domain.onSuccess
 import com.tilda.feature.crypto.domain.interactor.GetCoinHistoryUseCase
 import com.tilda.feature.crypto.domain.interactor.GetPagedCoinsUseCase
-import com.tilda.feature.crypto.presentation.models.CoinUi
-import com.tilda.feature.crypto.presentation.models.toCoinUi
+import com.tilda.crypto.presentation.models.CoinUi
+import com.tilda.crypto.presentation.models.toCoinUi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

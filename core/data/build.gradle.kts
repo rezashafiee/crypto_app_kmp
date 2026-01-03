@@ -132,5 +132,5 @@ dependencies {
 }
 
 room {
-    schemaDirectory("$projectDir/schemas")
+    schemaDirectory(rootProject.file("schemas/${project.name}").absolutePath)
 }
