@@ -53,6 +53,8 @@ kotlin {
             dependencies {
 
                 implementation(projects.feature.crypto.domain)
+                implementation(projects.core.domain)
+                implementation(projects.core.presentation)
 
                 implementation(libs.kotlin.stdlib)
 
@@ -71,6 +73,12 @@ kotlin {
 
                 implementation(libs.androidx.lifecycle.viewmodelCompose)
                 implementation(libs.androidx.lifecycle.runtimeCompose)
+
+                implementation(libs.androidx.paging.compose)
+
+                implementation(libs.koin.core)
+                implementation(libs.koin.compose)
+                implementation(libs.koin.compose.viewmodel)
             }
         }
 
@@ -112,6 +120,11 @@ android {
         getByName("release") {
             isMinifyEnabled = false
         }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }
 

@@ -1,6 +1,6 @@
 package com.tilda.crypto.data.datasource
 
-import com.tilda.core.data.db.model.CoinEntity
+import com.tilda.core.data.database.model.CoinEntity
 
 interface CoinLocalDataSource {
     suspend fun getItemsCount(): Int

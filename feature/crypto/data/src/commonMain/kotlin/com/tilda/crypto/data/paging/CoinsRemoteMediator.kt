@@ -4,7 +4,7 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
-import com.tilda.core.data.db.model.CoinEntity
+import com.tilda.core.data.database.model.CoinEntity
 import com.tilda.crypto.data.datasource.CoinLocalDataSource
 import com.tilda.crypto.data.datasource.CoinRemoteDataSource
 import com.tilda.crypto.data.mapper.toCoinEntity

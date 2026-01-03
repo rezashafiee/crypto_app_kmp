@@ -1,8 +1,8 @@
-package com.tilda.core.data.db.di
+package com.tilda.core.data.di
 
 import androidx.room.RoomDatabase
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
-import com.tilda.core.data.db.CoinDatabase
+import com.tilda.core.data.database.CoinDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import org.koin.core.module.Module

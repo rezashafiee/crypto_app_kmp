@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
@@ -21,6 +23,10 @@ kotlin {
             sourceSetTreeName = "test"
         }.configure {
             instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        }
+
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
 
@@ -61,11 +67,17 @@ kotlin {
             dependencies {
 
                 implementation(projects.core.data)
+                implementation(projects.core.domain)
                 implementation(projects.feature.crypto.domain)
 
                 implementation(libs.kotlin.stdlib)
                 implementation(libs.kotlinx.datetime)
                 implementation(libs.androidx.paging.common)
+
+                implementation(libs.koin.core)
+
+                implementation(ktorLibs.serialization.kotlinx.json)
+                implementation(libs.androidx.room.runtime)
             }
         }
 

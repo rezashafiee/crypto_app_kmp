@@ -1,6 +1,6 @@
 package com.tilda.crypto.data.mapper
 
-import com.tilda.core.data.db.model.CoinEntity
+import com.tilda.core.data.database.model.CoinEntity
 import com.tilda.crypto.data.dto.CoinDto
 import com.tilda.crypto.data.dto.CoinPriceDto
 import com.tilda.feature.crypto.domain.model.Coin

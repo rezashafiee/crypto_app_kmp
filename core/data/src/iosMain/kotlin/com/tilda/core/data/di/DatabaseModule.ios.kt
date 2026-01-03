@@ -1,8 +1,8 @@
-package com.tilda.core.data.db.di
+package com.tilda.core.data.di
 
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.tilda.core.data.db.CoinDatabase
+import com.tilda.core.data.database.CoinDatabase
 import kotlinx.cinterop.ExperimentalForeignApi
 import org.koin.core.module.Module
 import org.koin.dsl.module

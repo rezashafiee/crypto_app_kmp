@@ -1,11 +1,11 @@
-package com.tilda.core.data.db.dao
+package com.tilda.core.data.database.dao
 
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.tilda.core.data.db.model.CoinEntity
+import com.tilda.core.data.database.model.CoinEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -1,4 +1,4 @@
-package com.tilda.core.data.db.model
+package com.tilda.core.data.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

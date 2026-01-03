@@ -1,4 +1,4 @@
-package com.tilda.feature.crypto.presentation.coin_list
+package com.tilda.crypto.presentation.coin_list
 
 import androidx.compose.runtime.Immutable
 import androidx.paging.PagingData

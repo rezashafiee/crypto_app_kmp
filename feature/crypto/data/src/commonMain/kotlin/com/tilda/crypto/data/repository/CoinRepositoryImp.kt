@@ -3,7 +3,7 @@ package com.tilda.crypto.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.tilda.core.data.db.model.CoinEntity
+import com.tilda.core.data.database.model.CoinEntity
 import com.tilda.core.domain.NetworkError
 import com.tilda.core.domain.Result
 import com.tilda.crypto.data.datasource.CoinRemoteDataSource

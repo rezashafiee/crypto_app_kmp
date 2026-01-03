@@ -1,10 +1,11 @@
-package com.tilda.feature.crypto.presentation.coin_list
+package com.tilda.crypto.presentation.coin_list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.tilda.crypto.presentation.coin_list.CoinListEvent
+import com.tilda.core.domain.onError
+import com.tilda.core.domain.onSuccess
 import com.tilda.feature.crypto.domain.interactor.GetCoinHistoryUseCase
 import com.tilda.feature.crypto.domain.interactor.GetPagedCoinsUseCase
 import com.tilda.feature.crypto.presentation.models.CoinUi
@@ -17,7 +18,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.time.ZonedDateTime
+import kotlin.time.Clock
 
 class CoinListViewModel(
     getPagedCoinsUseCase: GetPagedCoinsUseCase,
@@ -57,7 +58,7 @@ class CoinListViewModel(
             }
             getCoinHistoryUseCase(
                 coinSymbol = coinUi.symbol,
-                end = ZonedDateTime.now()
+                end = Clock.System.now()
             )
                 .onSuccess { history ->
                     _state.update {

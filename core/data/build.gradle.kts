@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
@@ -24,6 +26,10 @@ kotlin {
             sourceSetTreeName = "test"
         }.configure {
             instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        }
+
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
 
@@ -66,7 +72,7 @@ kotlin {
                 implementation(project(":core:domain"))
 
                 implementation(libs.kotlin.stdlib)
-                implementation(ktorLibs.client.core)
+                api(ktorLibs.client.core)
                 implementation(ktorLibs.client.contentNegotiation)
                 implementation(ktorLibs.client.logging)
                 implementation(ktorLibs.serialization.kotlinx.json)
@@ -74,6 +80,7 @@ kotlin {
                 implementation(libs.androidx.room.runtime)
                 implementation(libs.androidx.sqlite.bundled)
                 implementation(libs.androidx.paging.common)
+                implementation(libs.androidx.room.paging)
             }
         }
 

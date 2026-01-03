@@ -36,6 +36,8 @@ kotlin {
         commonMain.dependencies {
 
             implementation(projects.core.data)
+            implementation(projects.feature.crypto.data)
+            implementation(projects.feature.crypto.presentation)
 
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)

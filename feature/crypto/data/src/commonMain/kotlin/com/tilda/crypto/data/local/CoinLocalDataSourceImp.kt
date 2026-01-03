@@ -2,8 +2,8 @@ package com.tilda.crypto.data.local
 
 import androidx.room.immediateTransaction
 import androidx.room.useWriterConnection
-import com.tilda.core.data.db.CoinDatabase
-import com.tilda.core.data.db.model.CoinEntity
+import com.tilda.core.data.database.CoinDatabase
+import com.tilda.core.data.database.model.CoinEntity
 import com.tilda.crypto.data.datasource.CoinLocalDataSource
 
 class CoinLocalDataSourceImp(
