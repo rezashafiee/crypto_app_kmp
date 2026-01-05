@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.androidLint)
     alias(libs.plugins.ksp)
     alias(libs.plugins.androidx.room)
+    kotlin("plugin.serialization") version libs.versions.kotlin
 }
 
 kotlin {
@@ -77,8 +78,7 @@ kotlin {
                 implementation(libs.androidx.paging.common)
 
                 implementation(libs.koin.core)
-
-                implementation(ktorLibs.serialization.kotlinx.json)
+                implementation(libs.kotlinx.serialization.json)
                 implementation(libs.androidx.room.runtime)
             }
         }

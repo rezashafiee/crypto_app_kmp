@@ -11,7 +11,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.PagingData
@@ -57,8 +57,7 @@ fun CoinListScreen(
                 loadState.refresh is LoadState.Error -> {
                     val e = pagedCoins.loadState.refresh as LoadState.Error
                     item {
-                        Text((e.error as DomainError).toUiText().asString())
-                        Text(e.error.toString())
+                        ErrorView(e)
                     }
                 }
 
@@ -69,8 +68,7 @@ fun CoinListScreen(
                 loadState.append is LoadState.Error -> {
                     val e = pagedCoins.loadState.append as LoadState.Error
                     item {
-                        Text((e.error as DomainError).toUiText().asString())
-                        Text(e.error.toString())
+                        ErrorView(e)
                     }
                 }
             }
@@ -78,7 +76,18 @@ fun CoinListScreen(
     }
 }
 
-@PreviewLightDark
+@Composable
+fun ErrorView(e: LoadState.Error) {
+    Text(
+        if (e.error is DomainError)
+            (e.error as DomainError).toUiText().asString()
+        else
+            e.error.toString()
+    )
+}
+
+
+@Preview
 @Composable
 private fun CoinListScreenPreview() {
     MaterialTheme {
