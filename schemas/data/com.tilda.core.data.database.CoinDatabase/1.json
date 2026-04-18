@@ -1,0 +1,91 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "12f20245e5c37209fe7045cc015e75ba",
+    "entities": [
+      {
+        "tableName": "coins",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`databaseId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id` INTEGER NOT NULL, `rank` TEXT NOT NULL, `symbol` TEXT NOT NULL, `name` TEXT NOT NULL, `currentPrice` REAL NOT NULL, `marketCap` REAL NOT NULL, `priceChange24h` REAL NOT NULL, `priceChangePercentage24h` REAL NOT NULL, `logoUrl` TEXT NOT NULL, `lastUpdate` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "databaseId",
+            "columnName": "databaseId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rank",
+            "columnName": "rank",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "symbol",
+            "columnName": "symbol",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "currentPrice",
+            "columnName": "currentPrice",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "marketCap",
+            "columnName": "marketCap",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "priceChange24h",
+            "columnName": "priceChange24h",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "priceChangePercentage24h",
+            "columnName": "priceChangePercentage24h",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "logoUrl",
+            "columnName": "logoUrl",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastUpdate",
+            "columnName": "lastUpdate",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "databaseId"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '12f20245e5c37209fe7045cc015e75ba')"
+    ]
+  }
+}
