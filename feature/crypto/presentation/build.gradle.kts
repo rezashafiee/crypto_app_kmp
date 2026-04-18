@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
@@ -10,7 +10,20 @@ plugins {
 
 kotlin {
 
-    androidTarget {
+    androidLibrary {
+        namespace = "com.tilda.crypto.presentation"
+        compileSdk = 36
+        minSdk = 28
+
+        withHostTestBuilder {
+        }
+
+        withDeviceTestBuilder {
+            sourceSetTreeName = "test"
+        }.configure {
+            instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        }
+
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
@@ -93,6 +106,7 @@ kotlin {
                 // Add Android-specific dependencies here. Note that this source set depends on
                 // commonMain by default and will correctly pull the Android artifacts of any KMP
                 // dependencies declared in commonMain.
+                implementation(libs.compose.ui.tooling)
             }
         }
 
@@ -108,26 +122,3 @@ kotlin {
     }
 }
 
-android {
-    namespace = "com.tilda.crypto.presentation"
-    compileSdk = 36
-
-    defaultConfig {
-        minSdk = 28
-    }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-}
-
-dependencies {
-    debugImplementation(libs.compose.ui.tooling)
-}
