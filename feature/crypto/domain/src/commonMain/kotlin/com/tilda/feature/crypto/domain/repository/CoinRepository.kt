@@ -11,6 +11,10 @@ import kotlin.time.Instant
 interface CoinRepository {
     fun getPagedCoins(): Flow<PagingData<Coin>>
 
+    fun getFavoriteCoinIds(): Flow<Set<Int>>
+
+    suspend fun setCoinFavorite(coinId: Int, isFavorite: Boolean)
+
     suspend fun getCoinsHistory(
         coinSymbol: String,
         end: Instant

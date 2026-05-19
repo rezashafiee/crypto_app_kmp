@@ -4,13 +4,16 @@ import androidx.room.immediateTransaction
 import androidx.room.useWriterConnection
 import com.tilda.core.data.database.CoinDatabase
 import com.tilda.core.data.database.model.CoinEntity
+import com.tilda.core.data.database.model.FavoriteCoinEntity
 import com.tilda.crypto.data.datasource.CoinLocalDataSource
+import kotlinx.coroutines.flow.Flow
 
 class CoinLocalDataSourceImp(
     private val coinDatabase: CoinDatabase
 ) : CoinLocalDataSource {
 
     private val coinDao = coinDatabase.coinDao()
+    private val favoriteCoinDao = coinDatabase.favoriteCoinDao()
 
     override suspend fun getItemsCount(): Int {
         return coinDao.countItems()
@@ -31,5 +34,17 @@ class CoinLocalDataSourceImp(
 
     override suspend fun addCoins(coinEntities: List<CoinEntity>) {
         coinDao.addCoins(*coinEntities.toTypedArray())
+    }
+
+    override fun getFavoriteCoinIds(): Flow<List<Int>> {
+        return favoriteCoinDao.getFavoriteCoinIds()
+    }
+
+    override suspend fun addFavoriteCoin(coinId: Int) {
+        favoriteCoinDao.insertFavoriteCoin(FavoriteCoinEntity(coinId))
+    }
+
+    override suspend fun deleteFavoriteCoin(coinId: Int) {
+        favoriteCoinDao.deleteFavoriteCoin(coinId)
     }
 }

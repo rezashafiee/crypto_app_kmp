@@ -9,5 +9,6 @@ import kotlinx.coroutines.flow.emptyFlow
 @Immutable
 data class CoinListUiState(
     val pagedCoins: Flow<PagingData<CoinUi>> = emptyFlow(),
-    val selectedCoin: CoinUi? = null
+    val selectedCoin: CoinUi? = null,
+    val showFavoritesOnly: Boolean = false
 )

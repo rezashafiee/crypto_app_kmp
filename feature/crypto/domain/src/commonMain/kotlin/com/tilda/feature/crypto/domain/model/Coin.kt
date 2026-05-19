@@ -11,4 +11,5 @@ data class Coin(
     val priceChangePercentage24h: Double,
     val logoUrl: String,
     val lastUpdate: Long,
+    val isFavorite: Boolean = false
 )

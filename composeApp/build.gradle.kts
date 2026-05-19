@@ -1,10 +1,7 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidKotlinMultiplatformLibrary)
-    alias(libs.plugins.composeMultiplatform)
-    alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.convention.cmp.library)
     alias(libs.plugins.composeHotReload)
 }
 
@@ -13,6 +10,14 @@ kotlin {
         namespace = "com.tilda.crypto_app_kmp.compose"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
+
+        withHostTestBuilder {}
+
+        withDeviceTestBuilder {
+            sourceSetTreeName = "test"
+        }.configure {
+            instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        }
 
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
@@ -38,6 +43,8 @@ kotlin {
             implementation(projects.core.data)
             implementation(projects.feature.crypto.data)
             implementation(projects.feature.crypto.presentation)
+            implementation(projects.feature.news.data)
+            implementation(projects.feature.news.presentation)
 
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
@@ -57,9 +64,7 @@ kotlin {
             implementation(libs.androidx.paging.compose)
         }
         commonTest.dependencies {
-            implementation(libs.kotlin.test)
             implementation(libs.koin.test)
         }
     }
 }
-

@@ -3,28 +3,16 @@ plugins {
 }
 
 dependencies {
-    compileOnly(libs.kotlin.gradle.plugin)
-    compileOnly(libs.android.gradlePlugin)
+    implementation(libs.kotlin.gradle.plugin)
+    implementation("org.jetbrains.kotlin.plugin.compose:org.jetbrains.kotlin.plugin.compose.gradle.plugin:${libs.versions.kotlin.get()}")
+    implementation(libs.android.gradlePlugin)
+    implementation("org.jetbrains.compose:compose-gradle-plugin:${libs.versions.composeMultiplatform.get()}")
     implementation(libs.buildkonfig.gradlePlugin)
     implementation(libs.buildkonfig.compiler)
 }
 
 gradlePlugin {
     plugins {
-        register("kmpLibrary") {
-            id = libs.plugins.convention.kmp.library.get().pluginId
-            implementationClass = "KmpLibraryConventionPlugin"
-        }
-
-        register("cmpLibrary") {
-            id = libs.plugins.convention.cmp.library.get().pluginId
-            implementationClass = "CmpLibraryConventionPlugin"
-        }
-
-        register("androidLibrary") {
-            id = libs.plugins.convention.android.library.get().pluginId
-            implementationClass = "AndroidLibraryConventionPlugin"
-        }
 
         register("buildKonfig") {
             id = libs.plugins.convention.buildKonfig.get().pluginId

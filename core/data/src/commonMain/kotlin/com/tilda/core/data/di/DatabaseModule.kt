@@ -20,4 +20,5 @@ val databaseModule = module {
             .build()
     }
     single { get<CoinDatabase>().coinDao() }
+    single { get<CoinDatabase>().favoriteCoinDao() }
 }

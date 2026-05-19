@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,6 +33,7 @@ val greenDark = Color(0xFF79DC7A)
 @Composable
 fun CoinListItem(
     coinUi: CoinUi,
+    onFavoriteClick: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -97,6 +99,21 @@ fun CoinListItem(
                     },
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 10.sp,
+                )
+            }
+            IconButton(
+                onClick = onFavoriteClick,
+                modifier = Modifier.size(40.dp)
+            ) {
+                Text(
+                    text = if (coinUi.isFavorite) "★" else "☆",
+                    color = if (coinUi.isFavorite) {
+                        MaterialTheme.colorScheme.primary
+                    } else {
+                        MaterialTheme.colorScheme.outline
+                    },
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.Black
                 )
             }
         }
